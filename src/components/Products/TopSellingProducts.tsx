@@ -1,7 +1,7 @@
 // components/TopSellingProducts.tsx
 import {Table, Card, Rate, Image, Typography, Avatar} from 'antd';
 import { Props } from '@/utils/Interfaces';
-import {Product} from "@/utils/ProductCalculations";
+import {Product} from "@/utils/Interfaces";
 import PriceDisplay from "@/components/Products/PriceDisplay";
 
 const { Text } = Typography;

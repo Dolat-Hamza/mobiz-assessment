@@ -1,6 +1,6 @@
 // components/StockIndicator.tsx
 import { Tag, Tooltip } from 'antd';
-import {Product} from "@/utils/ProductCalculations";
+import {Product} from "@/utils/Interfaces";
 
 interface Props {
     product: Product; // Pass the entire product object instead of just stock

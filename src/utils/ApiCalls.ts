@@ -1,8 +1,8 @@
-import {ApiResponse, UpdateUserPayload, User} from "@/utils/Interfaces";
+import {ApiResponse, ProductsResponse, UpdateUserPayload, User} from "@/utils/Interfaces";
 
 const baseUrl:string = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://dummyjson.com';
 
-export const getProducts = async (): Promise<ApiResponse<ApiResponse<any>>> => { // Use previously defined APIResponse interface
+export const getProducts = async (): Promise<ApiResponse<ApiResponse<ProductsResponse>>> => { // Use previously defined APIResponse interface
     try {
         const response = await fetch(`${baseUrl}/products`);
 

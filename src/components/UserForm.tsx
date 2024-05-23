@@ -17,28 +17,82 @@ const UserForm: React.FC<UserFormProps> = ({initialValues, onSubmit}) => {
     const router = useRouter();
     const searchParam = useSearchParams()
     const pathname = usePathname()
-   
+    const emptyUser: User = {
+        id: 0,
+        firstName: '',
+        lastName: '',
+        maidenName: '',
+        age: 0,
+        gender: '',
+        email: '',
+        phone: '',
+        username: '',
+        password: '',
+        birthDate: '',
+        image: '',
+        bloodGroup: '',
+        height: 0,
+        weight: 0,
+        eyeColor: '',
+        hair: {
+            color: '',
+            type: '',
+        },
+        domain: '',
+        ip: '',
+        address: {
+            address: '',
+            city: '',
+            coordinates: {
+                lat: 0,
+                lng: 0,
+            },
+            postalCode: '',
+            state: '',
+        },
+        macAddress: '',
+        university: '',
+        bank: {
+            cardExpire: '',
+            cardNumber: '',
+            cardType: '',
+            currency: '',
+            iban: '',
+        },
+        company: {
+            address: {
+                address: '',
+                city: '',
+                coordinates: {
+                    lat: 0,
+                    lng: 0,
+                },
+                postalCode: '',
+                state: '',
+            },
+            department: '',
+            name: '',
+            title: '',
+        },
+        ein: '',
+        ssn: '',
+        userAgent: '',
+        crypto: {
+            coin: '',
+            wallet: '',
+            network: '',
+        },
+    };
+
     return (
         <Formik
-            initialValues={initialValues || {
-                firstName: '',
-                lastName: '',
-                maidenName: '',
-                email: '',
-                phone: '',
-                username: '',
-                password: '',
-
-            }}
+            initialValues={initialValues || emptyUser} // Use the emptyUser if initialValues is undefined
             validationSchema={userValidationSchema}
             onSubmit={onSubmit}
+            enableReinitialize
         >
             {({errors, touched, handleChange, handleBlur, values}) => (
-                <Form layout="vertical" onFinish={() => onSubmit(values, {
-                    setSubmitting: () => {
-
-                    }
-                } as FormikHelpers<User>)}>
+                <Form layout="vertical" >
                     <Form.Item label="First Name" required>
                         <Input
                             name="firstName"

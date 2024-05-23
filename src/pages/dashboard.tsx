@@ -2,7 +2,7 @@ import Layout from "@/components/Common/Layout";
 import DashboardLayout from "@/components/Products/DashboardLayout";
 import {getProducts} from "@/utils/ApiCalls";
 import {useEffect, useState} from "react";
-import {calculateAverageRating, countProductsByCategory, Product} from "@/utils/ProductCalculations";
+import {calculateAverageRating, countProductsByCategory} from "@/utils/ProductCalculations";
 import {ApiResponse, ProductsResponse} from "@/utils/Interfaces";
 import AverageRatingCard from "@/components/Products/AverageRating";
 import {Col} from "antd";
@@ -19,17 +19,12 @@ const Dashboard = () => {
     const [apiResponse, setApiResponse] = useState<ApiResponse<ProductsResponse>>();
     useEffect(() => {
         const fetchData = async () => {
-            const response = await getProducts();
-
+            const response = await getProducts()
             // Check for success and extract data
             if (response.statusCode === 200 && response.data) {
-                setApiResponse({
-                    statusCode: 200,
-                    message: 'Products fetched successfully',
-                    data: response.data // Extract the data from the response
-                });
+                setApiResponse(response.data);
             } else {
-                setApiResponse(response); // Set the response as is in case of error
+                setApiResponse(response.data); // Set the response as is in case of error
             }
         };
 

@@ -19,7 +19,7 @@ const UsersPage: NextPage = () => {
             try {
                 const fetchedUsers = await getUsers();
                 console.log(fetchedUsers)
-                setUsers(fetchedUsers.data?.users);
+                setUsers(fetchedUsers.data?.users? fetchedUsers.data?.users :[]);
             } catch (err) {
                 setError("Error fetching users");
                 console.error("Error fetching users:", err);

@@ -18,7 +18,7 @@ const SalesForecast: React.FC<Props> = ({ products }) => {
 
     const chartOptions = {
         chart: {
-            type: 'line',
+            type: 'spline',
             backgroundColor: 'transparent',
         },
         title: {
@@ -40,10 +40,7 @@ const SalesForecast: React.FC<Props> = ({ products }) => {
         },
         tooltip: {
             shared: true,
-            formatter: function() {
-                return '<b>' + this.x + '</b><br/>' +
-                    this.points.map(point => point.series.name + ': ' + point.y).join('<br/>');
-            }
+
         },
         plotOptions: {
             series: {
@@ -62,7 +59,7 @@ const SalesForecast: React.FC<Props> = ({ products }) => {
                 name: 'Forecast Sales',
                 data: forecastSales.slice(historicalSales.length), // Only forecast data
                 color: '#FFCE56', // Yellow color
-                dashStyle: 'ShortDash', // Dashed line for forecast
+                dashStyle: 'Dash', // Dashed line for forecast
             },
         ],
     };

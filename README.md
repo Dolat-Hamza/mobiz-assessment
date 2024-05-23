@@ -1,40 +1,172 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Mobiz Technical Assessment - Dolat Hamza
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This project is built using modern web development tools and libraries to provide a robust, responsive, and interactive user experience. The primary focus is on utilizing the capabilities of Next.js for server-side rendering and static site generation, along with Ant Design for UI components and Tailwind CSS for styling.
+
+## Table of Contents
+
+- [Dependencies](#dependencies)
+- [Setup](#setup)
+- [Usage](#usage)
+- [External Libraries and APIs](#external-libraries-and-apis)
+- [Project Structure](#project-structure)
+- [Directory Structure](#directy-structure)
+
+
+## Dependencies
+
+The project relies on the following dependencies:
+
+```json
+"dependencies": {
+    "@ant-design/cssinjs": "^1.20.0",
+    "antd": "^5.17.3",
+    "formik": "^2.4.6",
+    "framer-motion": "^11.2.6",
+    "highcharts": "^11.4.3",
+    "highcharts-react-official": "^3.2.1",
+    "next": "14.2.3",
+    "next-auth": "^4.24.7",
+    "next-themes": "^0.3.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "yup": "^1.4.0"
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **@ant-design/cssinjs**: Used for styling with Ant Design.
+- **antd**: A popular React UI library for building user interfaces.
+- **formik**: A library for building forms in React, making form state management easier.
+- **framer-motion**: Used for animations in React applications.
+- **highcharts**: A charting library for creating interactive charts.
+- **highcharts-react-official**: The official Highcharts wrapper for React.
+- **next**: A React framework for server-side rendering and static site generation.
+- **next-auth**: Authentication for Next.js applications.
+- **next-themes**: Theme management for Next.js.
+- **react**: A JavaScript library for building user interfaces.
+- **react-dom**: Serves as the entry point to the DOM and server renderers for React.
+- **yup**: A schema builder for value parsing and validation.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Additionally, **Tailwind CSS** is used for utility-first CSS styling.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Setup
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+To set up the project locally:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/your-username/your-repo.git
+    ```
+2. Navigate to the project directory:
+    ```sh
+    cd your-repo
+    ```
+3. Install dependencies:
+    ```sh
+    npm install
+    ```
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+To run the project locally:
+```sh
+npm run dev
+```
+This will start the development server on `http://localhost:3000`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## External Libraries and APIs
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Dummy JSON API
+The project uses the Dummy JSON API (https://dummyjson.com) for fetching sample data.
 
-## Deploy on Vercel
+### Fetch API
+The native Fetch API is used for making HTTP requests to external services.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+/public
+    # Static assets
+/pages
+    # Next.js pages
+/components
+    # React components
+/styles
+    # CSS and Tailwind styles
+```
+
+## Directory Structure
+
+````
+src
+├── components
+│   ├── Common
+│   │   ├── Chart.tsx
+│   │   ├── Filter.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Layout.tsx
+│   │   ├── Logo.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── ProductTable.tsx
+│   │   ├── RequireAuth.tsx
+│   │   ├── Sidebar.tsx
+│   │   └── ThemeSwitch.tsx
+│   ├── Home
+│   │   ├── About.tsx
+│   │   ├── CallToAction.tsx
+│   │   ├── ErrorAlert.tsx
+│   │   ├── FeatureHighlights.tsx
+│   │   ├── Hero.tsx
+│   │   ├── LoadingSpinner.tsx
+│   │   ├── Pricing.tsx
+│   │   └── ProductGrid.tsx
+│   ├── OrderForm.tsx
+│   ├── ProductForm.tsx
+│   └── Products
+│       ├── AverageRating.tsx
+│       ├── BrandPopularityChart.tsx
+│       ├── DashboardLayout.tsx
+│       ├── PriceDisplay.tsx
+│       ├── PriceDistributionChart.tsx
+│       ├── ProductCategoryChart.tsx
+│       ├── ProductTable.tsx
+│       ├── ProfitAnalysis.tsx
+│       ├── SalesForecast.tsx
+│       ├── StockIndicator.tsx
+│       ├── StockLevelGauge.tsx
+│       ├── ThumbnailImage.tsx
+│       └── TopSellingProducts.tsx
+├── context
+│   └── ThemeContext.tsx
+├── pages
+│   ├── _app.tsx
+│   ├── _document.tsx
+│   ├── api
+│   │   ├── auth
+│   │   │   └── [...nextauth].ts
+│   │   └── hello.ts
+│   ├── auth
+│   │   └── login.tsx
+│   ├── dashboard.tsx
+│   ├── index.tsx
+│   ├── protected.tsx
+│   └── users
+│       ├── [userId]
+│       │   ├── edit.tsx
+│       │   └── index.tsx
+│       ├── create.tsx
+│       └── index.tsx
+├── styles
+│   └── globals.css
+└── utils
+    ├── ApiCalls.ts
+    ├── Interfaces.ts
+    ├── ProductCalculations.ts
+    └── validation.ts
+````
+## Graphical View
+
+![Alt text](public/images/src.png)
+

@@ -9,20 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ant-design/cssinjs": "^1.20.0",
     "antd": "^5.17.3",
-    "autoprefixer": "^10.4.19",
+    "@ant-design/icons": "^5.3.7",
+    "rc-table": "^7.45.6",
     "formik": "^2.4.6",
     "framer-motion": "^11.2.6",
     "highcharts": "^11.4.3",
     "highcharts-react-official": "^3.2.1",
     "next": "14.2.3",
     "next-auth": "^4.24.7",
-    "next-themes": "^0.3.0",
     "react": "^18",
-    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
-    "styled-components": "^6.1.11",
     "yup": "^1.4.0"
   },
   "devDependencies": {

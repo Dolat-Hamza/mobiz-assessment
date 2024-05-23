@@ -17,29 +17,45 @@ import PriceDisplay from "@/components/Products/PriceDisplay";
 
 const Dashboard = () => {
     const [apiResponse, setApiResponse] = useState<ApiResponse<ProductsResponse>>();
+
     useEffect(() => {
         const fetchData = async () => {
-            const response = await getProducts()
+            const response = await getProducts();
+            console.log("YOOO",response)
             // Check for success and extract data
             if (response.statusCode === 200 && response.data) {
-                setApiResponse(response.data);
+                setApiResponse(
+                    {
+                        statusCode: 200,
+                        message: "Products fetched successfully",
+                        data: {
+                            products: response.data.products,
+                            total: response.data.total,
+                            skip: response.data.skip,
+                            limit: response.data.limit
+                        }
+                    }
+                ); // Update the state with the full ApiResponse
             } else {
-                setApiResponse(response.data); // Set the response as is in case of error
+                setApiResponse({
+                    statusCode: response.statusCode,
+                    message: response.message || "An error occurred",
+                });
             }
         };
 
         fetchData();
     }, []);
-    console.log(apiResponse)
+    // Access product data like this:
+    const products = apiResponse?.data?.products || []; // Use optional chaining for safety
 
-    if (!apiResponse || !apiResponse.products) {
+    if (!apiResponse || !apiResponse?.data?.products) {
         return (
             <div>
                 {apiResponse?.message || "Loading products..."}
             </div>
         )
     }
-    const products = apiResponse.products;
     const averageRating = calculateAverageRating(products);
     const productCountsByCategory = countProductsByCategory(products);
     console.log(productCountsByCategory)

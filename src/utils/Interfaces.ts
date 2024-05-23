@@ -19,7 +19,18 @@ export interface APIResponse {
     limit: number;
 }
 export interface ApiResponse<T> {
-    products: Product[];
+    statusCode: number;
+    message: string;
+    data?: {
+        products: Product[];
+        total: number;
+        skip: number;
+        limit: number;
+    };
+    users?: User[]; // Add the users property
+
+}
+export interface ApiResponseForOthers<T> {
     statusCode: number;
     message: string;
     data?: T;

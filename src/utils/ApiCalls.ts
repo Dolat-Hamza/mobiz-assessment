@@ -1,8 +1,8 @@
-import {ApiResponse, ProductsResponse, UpdateUserPayload, User} from "@/utils/Interfaces";
+import {ApiResponse, ApiResponseForOthers, ProductsResponse, UpdateUserPayload, User} from "@/utils/Interfaces";
 
 const baseUrl:string = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://dummyjson.com';
 
-export const getProducts = async (): Promise<ApiResponse<ApiResponse<ProductsResponse>>> => { // Use previously defined APIResponse interface
+export const getProducts = async (): Promise<ApiResponse<ApiResponse<any>>> => { // Use previously defined APIResponse interface
     try {
         const response = await fetch(`${baseUrl}/products`);
 
@@ -27,7 +27,7 @@ export const getProducts = async (): Promise<ApiResponse<ApiResponse<ProductsRes
         };
     }
 };
-export const getUsers = async (): Promise<ApiResponse<ApiResponse<any>>> => { // Use previously defined APIResponse interface
+export const getUsers = async (): Promise<ApiResponseForOthers<ApiResponseForOthers<any>>> => { // Use previously defined APIResponse interface
     try {
         const response = await fetch(`${baseUrl}/users`);
 
@@ -53,7 +53,7 @@ export const getUsers = async (): Promise<ApiResponse<ApiResponse<any>>> => { //
     }
 };
 
-export const addUser = async (user: User): Promise<ApiResponse<any>> => {
+export const addUser = async (user: User): Promise<ApiResponseForOthers<any>> => {
     try {
         const response = await fetch(`${baseUrl}/users/add`, {
             method: 'POST',
@@ -83,7 +83,7 @@ export const addUser = async (user: User): Promise<ApiResponse<any>> => {
     }
 };
 
-export const getSingleUserById = async (userId: number): Promise<ApiResponse<User>> => {
+export const getSingleUserById = async (userId: number): Promise<ApiResponseForOthers<User>> => {
     try {
         const response = await fetch(`${baseUrl}/users/${userId}`);
 
@@ -110,7 +110,7 @@ export const getSingleUserById = async (userId: number): Promise<ApiResponse<Use
 };
 
 
-export const updateUser = async (userId: number, updateData: UpdateUserPayload): Promise<ApiResponse<User>> => {
+export const updateUser = async (userId: number, updateData: UpdateUserPayload): Promise<ApiResponseForOthers<User>> => {
     try {
         const response = await fetch(`${baseUrl}/users/${userId}`, {
             method: 'PUT', // or 'PATCH' based on the use case

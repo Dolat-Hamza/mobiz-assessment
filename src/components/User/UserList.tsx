@@ -16,8 +16,8 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
             dataSource={users}
             renderItem={(user, index) => (
                 <List.Item key={index} actions={[
-                    <Link href={`/users/${user.id}/edit`}>Edit</Link>,
-                    <Link href={`/users/${user.id}`}>View</Link>
+                    <Link key={index} href={`/users/${user.id}/edit`}>Edit</Link>,
+                    <Link key={index} href={`/users/${user.id}`}>View</Link>
                 ]}>
                     <List.Item.Meta
                         avatar={<Avatar src={user?.image} />}

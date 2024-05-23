@@ -18,9 +18,8 @@ export const useTheme = () => {
 interface LayoutProps {
     children: ReactNode; // Define the children prop
 }
-
 export const ThemeProvider: React.FC<LayoutProps> = ({ children }) => {
-    const [theme, setTheme] = useState<'light' | 'dark'>('light'); // Default to light mode
+    const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
     useEffect(() => {
         const storedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
@@ -28,6 +27,12 @@ export const ThemeProvider: React.FC<LayoutProps> = ({ children }) => {
             setTheme(storedTheme);
         }
     }, []);
+
+    useEffect(() => {
+        const html = document.documentElement; // Get the root HTML element
+        html.classList.remove('light', 'dark');
+        html.classList.add(theme);
+    }, [theme]); // Add dependency on 'theme' to update when it changes
 
     const toggleTheme = () => {
         const newTheme = theme === 'light' ? 'dark' : 'light';
@@ -37,7 +42,7 @@ export const ThemeProvider: React.FC<LayoutProps> = ({ children }) => {
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
-            <div className={`${theme === 'dark' ? 'dark' : ''}`}>{children}</div>
+            {children}
         </ThemeContext.Provider>
     );
 };

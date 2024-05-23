@@ -1,9 +1,11 @@
 // components/ProductCategoryChart.tsx
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Card } from 'antd';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import {useTheme} from "@/context/ThemeContext";
+import darkUnica from "highcharts/themes/dark-unica"; // Import the dark theme
 interface Props {
     productCountsByCategory: Record<string, number>;
 }
@@ -76,7 +78,15 @@ const ProductCategoryChart: React.FC<Props> = ({ productCountsByCategory }) => {
             },
         ],
     };
+    const { theme } = useTheme();
 
+    useEffect(() => {
+        if (theme === 'dark') {
+            darkUnica(Highcharts);
+        } else {
+            Highcharts.setOptions(Highcharts.defaultOptions); // Reset to default theme for light mode
+        }
+    }, [theme]);
     return (
         <Card title="Product Categories by Count" style={{ width: '100%' }}>
             <HighchartsReact highcharts={Highcharts} options={chartOptions} />

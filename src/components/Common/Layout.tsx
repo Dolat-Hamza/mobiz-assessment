@@ -29,7 +29,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 transition={{type: "tween", duration: 0.3}}
             >
                 <Navbar onMenuClick={toggleSidebar}/> {/* Render the Navbar */}
-                <main className="p-6">
+                <main className="">
                     {children}
                 </main>
             </motion.div>

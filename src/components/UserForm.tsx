@@ -92,7 +92,7 @@ const UserForm: React.FC<UserFormProps> = ({initialValues, onSubmit}) => {
             enableReinitialize
         >
             {({errors, touched, handleChange, handleBlur, values}) => (
-                <Form layout="vertical" >
+                <Form rootClassName={"bg-white w-4/5 p-6 rounded-md"} layout="vertical" >
                     <Form.Item label="First Name" required>
                         <Input
                             name="firstName"

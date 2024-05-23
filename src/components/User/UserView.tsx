@@ -11,8 +11,8 @@ interface UserViewProps {
 
 const UserView: React.FC<UserViewProps> = ({user}) => {
     return (
-        <div style={{display: 'flex'}}>
-            <div style={{marginRight: '32px'}}>
+        <div className={"flex bg-white p-6 rounded-md "}>
+            <div >
                 <Avatar src={user.image} size={150}/>
                 <Descriptions title={user.firstName + " " + user.lastName} bordered column={1}
                               style={{marginTop: '16px'}}>

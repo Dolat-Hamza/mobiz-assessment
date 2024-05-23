@@ -11,7 +11,7 @@ interface UserListProps {
 const UserList: React.FC<UserListProps> = ({ users }) => {
     return (
         <List
-            rootClassName={"w-full "}
+            rootClassName={"w-full bg-white rounded-md p-4"}
             itemLayout="horizontal"
             dataSource={users}
             renderItem={(user, index) => (

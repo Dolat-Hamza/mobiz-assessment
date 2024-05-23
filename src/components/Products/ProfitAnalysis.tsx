@@ -20,7 +20,7 @@ const ProfitAnalysis: React.FC<Props> = ({ products }) => {
 
     return (
         <Card title="Profit Analysis" rootClassName={"w-full max-h-96 overflow-y-scroll"}>
-            <Statistic title="Total Profit" value={totalProfit} prefix="$" />
+            <Statistic title="Total Profit" value={totalProfit.toFixed(2)} prefix="$" />
             <Table columns={columns} dataSource={products}  />
         </Card>
     );

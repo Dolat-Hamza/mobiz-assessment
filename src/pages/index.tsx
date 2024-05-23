@@ -77,7 +77,7 @@ const LandingPage: React.FC = () => {
                 <AboutUs/>
 
                 <CallToAction/>
-                <Footer/>
+
             </div>
         </Layout>
     );

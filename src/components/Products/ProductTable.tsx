@@ -85,9 +85,13 @@ const ProductTable: React.FC<Props> = ({ products }) => {
                     allowClear
                     style={{ width: 200 }}
                 >
-                    {[...new Set(products.map(product => product.category))].map((category) => (
-                        <Option key={category} value={category}>{category}</Option>
-                    ))}
+                    {[...new Set(products.map((product) => product.category))].map(
+                        (category) => (
+                            <Select.Option key={category} value={category}>
+                                {category}
+                            </Select.Option>
+                        )
+                    )}
                 </Select>
             </Space>
             <Table

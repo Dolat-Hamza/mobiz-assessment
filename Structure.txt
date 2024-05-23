@@ -1,0 +1,21 @@
+pages/
+├── users/
+│   ├── index.tsx (User list/Read)
+│   ├── create.tsx (Create user form)
+│   ├── [userId]/edit.tsx (Update user form)
+├── products/
+│   ├── index.tsx (Product list/Read)
+│   ├── create.tsx (Create product form)
+│   ├── [productId]/edit.tsx (Update product form)
+├── orders/
+│   ├── index.tsx (Order list/Read)
+│   ├── create.tsx (Create order form)
+│   ├── [orderId]/edit.tsx (Update order form)
+├── ... (other pages)
+components/
+├── UserForm.tsx (Form component for creating/updating users)
+├── ProductForm.tsx
+├── OrderForm.tsx
+utils/
+├── api.ts (Functions for making API requests)
+├── validation.ts (Input validation functions)

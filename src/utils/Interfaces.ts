@@ -22,6 +22,8 @@ export interface ApiResponse<T> {
     statusCode: number;
     message: string;
     data?: T;
+    users?: User[]; // Add the users property
+
 }
 
 export interface ProductsResponse {
@@ -36,12 +38,7 @@ export interface Props {
 
 // utils/types.ts
 
-export interface User {
-    id: number;
-    name: string;
-    email: string;
-    // ... other fields
-}
+
 
 export interface Product {
     id: number;
@@ -57,3 +54,21 @@ export interface Order {
     quantity: number;
     // ... other fields
 }
+
+
+
+
+export interface User {
+    id: number;
+    firstName: string;
+    lastName: string;
+    maidenName: string;
+    age: number;
+    gender: string;
+    email: string;
+    phone: string;
+    username: string;
+    password: string;
+
+}
+

@@ -24,7 +24,6 @@ const UserForm: React.FC<UserFormProps> = ({initialValues, onSubmit}) => {
                 firstName: '',
                 lastName: '',
                 maidenName: '',
-                age: '',
                 email: '',
                 phone: '',
                 username: '',

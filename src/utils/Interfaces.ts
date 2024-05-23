@@ -19,6 +19,7 @@ export interface APIResponse {
     limit: number;
 }
 export interface ApiResponse<T> {
+    products: Product[];
     statusCode: number;
     message: string;
     data?: T;

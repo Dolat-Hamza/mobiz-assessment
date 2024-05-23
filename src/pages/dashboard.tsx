@@ -30,16 +30,16 @@ const Dashboard = () => {
 
         fetchData();
     }, []);
+    console.log(apiResponse)
 
-    if (!apiResponse || !apiResponse.data) {
+    if (!apiResponse || !apiResponse.products) {
         return (
             <div>
                 {apiResponse?.message || "Loading products..."}
             </div>
         )
     }
-
-    const products = apiResponse.data.products;
+    const products = apiResponse.products;
     const averageRating = calculateAverageRating(products);
     const productCountsByCategory = countProductsByCategory(products);
     console.log(productCountsByCategory)

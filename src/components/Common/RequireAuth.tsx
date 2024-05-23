@@ -23,7 +23,7 @@ const pathname = usePathname();
         if(status === 'authenticated' && pathname === '/auth/login') {
             router.push('/dashboard');
         }
-    }, [session, status, router]);
+    }, [session, status, router,pathname]);
 
     if (status === 'loading') return <p>Loading...</p>;
 

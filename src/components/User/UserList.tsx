@@ -14,8 +14,8 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
             rootClassName={"w-full "}
             itemLayout="horizontal"
             dataSource={users}
-            renderItem={(user) => (
-                <List.Item actions={[
+            renderItem={(user, index) => (
+                <List.Item key={index} actions={[
                     <Link href={`/users/${user.id}/edit`}>Edit</Link>,
                     <Link href={`/users/${user.id}`}>View</Link>
                 ]}>

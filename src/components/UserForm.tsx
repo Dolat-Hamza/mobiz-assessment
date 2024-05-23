@@ -1,9 +1,10 @@
 // components/UserForm.tsx
 
-import {Form, Input, Button, DatePicker, Select} from 'antd';
+import {Button, Form, Input} from 'antd';
 import {Formik, FormikHelpers} from 'formik';
 import {User} from "@/utils/Interfaces";
 import {userValidationSchema} from "@/utils/validation";
+import {usePathname, useRouter, useSearchParams} from "next/navigation";
 
 
 interface UserFormProps {
@@ -12,6 +13,11 @@ interface UserFormProps {
 }
 
 const UserForm: React.FC<UserFormProps> = ({initialValues, onSubmit}) => {
+    console.log(initialValues)
+    const router = useRouter();
+    const searchParam = useSearchParams()
+    const pathname = usePathname()
+   
     return (
         <Formik
             initialValues={initialValues || {
@@ -31,6 +37,7 @@ const UserForm: React.FC<UserFormProps> = ({initialValues, onSubmit}) => {
             {({errors, touched, handleChange, handleBlur, values}) => (
                 <Form layout="vertical" onFinish={() => onSubmit(values, {
                     setSubmitting: () => {
+
                     }
                 } as FormikHelpers<User>)}>
                     <Form.Item label="First Name" required>
@@ -85,7 +92,7 @@ const UserForm: React.FC<UserFormProps> = ({initialValues, onSubmit}) => {
 
                     <Form.Item>
                         <Button rootClassName={"w-full"} type="primary" htmlType="submit">
-                            Create User
+                            {searchParam.get('type') === 'create' ? 'Create User' : 'Update User'}
                         </Button>
                     </Form.Item>
                 </Form>

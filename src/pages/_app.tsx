@@ -6,6 +6,7 @@ import RequireAuth from "@/components/Common/RequireAuth";
 import {ThemeProvider} from "@/context/ThemeContext";
 
 function MyApp({Component, pageProps}: AppProps) {
+
     return (
         <ThemeProvider>
             <SessionProvider session={pageProps.session}>

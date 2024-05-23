@@ -10,14 +10,15 @@ import {
     TwitterSquareFilled
 } from '@ant-design/icons';
 import Paragraph from "antd/es/skeleton/Paragraph";
-import Facebook from "next-auth/providers/facebook"; // Add social icons
+import Facebook from "next-auth/providers/facebook";
+import {useSession} from "next-auth/react"; // Add social icons
 
 const { Footer } = Layout;
 const { Text, Link: AntdLink } = Typography;
 
 const CustomFooter: React.FC = () => {
     const { theme } = useTheme();
-
+    const {data: session, status} = useSession();
     return (
         <Footer
             style={{
@@ -39,7 +40,7 @@ const CustomFooter: React.FC = () => {
                         <ul className="list-none space-y-2">
                             <li><Link href="/">Home</Link></li>
                             <li><Link href="/dashboard">Dashboard</Link></li>
-                            <li><Link href="/users">Users</Link></li>
+                            {session?.user.role === "admin" &&<li><Link href="/users">Users</Link></li>}
                             {/* Add more links as needed */}
                         </ul>
                     </div>

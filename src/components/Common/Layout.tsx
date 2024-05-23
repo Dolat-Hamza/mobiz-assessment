@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Sidebar from "./Sidebar";
 import Navbar from "@/components/Common/Navbar";
+import Footer from "@/components/Common/Footer";
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -32,7 +33,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <main className="">
                     {children}
                 </main>
+                <Footer/>
             </motion.div>
+
         </div>
     );
 };

@@ -21,8 +21,11 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
         animate: { opacity: 1, transition: { duration: 1 } },
     };
     const { data: session, status } = useSession();
+
     const router = useRouter();
     const { theme } = useTheme(); // Get the current theme from context
+
+
 
     useEffect(() => {
         const body = document.body;
@@ -43,7 +46,7 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
             label: <Link href="/dashboard">Dashboard</Link>,
             key: "dashboard",
         },
-        {
+        session?.user.role === "admin" &&  {
             label: <Link href="/users">Users</Link>,
             key: "users",
         },
@@ -51,8 +54,9 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
             label: <Link href="/users/create">Create User</Link>,
             key: "create-user",
         },
-    ];
-    console.log(session)
+    ].filter((item): item is { label: JSX.Element; key: string } => Boolean(item)); // Filter out false values and ensure the type
+
+    console.log("HERE IS THE NEW SESSIOn",session)
     const handleLogout = () => {
         signOut();
         router.push("/auth/login");

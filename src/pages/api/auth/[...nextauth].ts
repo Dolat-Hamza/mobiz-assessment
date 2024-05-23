@@ -1,7 +1,7 @@
 // pages/api/auth/[...nextauth].ts
 
-import { NextApiRequest, NextApiResponse } from 'next';
-import NextAuth, { NextAuthOptions } from 'next-auth';
+import {NextApiRequest, NextApiResponse} from 'next';
+import NextAuth, {NextAuthOptions} from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 
 // Updated Type Declarations (if you're using custom.d.ts)
@@ -23,13 +23,19 @@ const options: NextAuthOptions = {
         sameSite: "lax", // Adjust if you have strict cross-origin needs
     },
     callbacks: {
-        async session({ session, token }) {
+        async session({session, token}) {
             if (session?.user && token?.sub) {
                 session.user.id = token.sub;
+                if (session.user.email === "dolathamza8019@gmail.com") {
+                    session.user.role = "admin"
+
+                } else {
+                    session.user.role = "user"
+                }
             }
             return session;
         },
-        async jwt({ token, user }) {
+        async jwt({token, user}) {
             if (user) {
                 token.sub = user.id;
             }

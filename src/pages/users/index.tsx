@@ -1,19 +1,23 @@
 import { NextPage } from "next";
 
-import { Alert, Spin } from 'antd';
+import {Alert, message, Spin} from 'antd';
 import {useEffect, useState} from "react";
 import {User} from "@/utils/Interfaces";
 import {getUsers} from "@/utils/ApiCalls";
 import UserList from "@/components/User/UserList";
 import Layout from "@/components/Common/Layout";
 import Title from "antd/es/skeleton/Title";
+import {useSession} from "next-auth/react";
+import {usePathname, useRouter} from "next/navigation";
 
 
 const UsersPage: NextPage = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-
+    const {data: session, status} = useSession();
+    const router = useRouter()
+    const pathname = usePathname()
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -29,6 +33,14 @@ const UsersPage: NextPage = () => {
         };
         fetchData();
     }, []);
+
+    useEffect(() => {
+        if (session?.user.role === "user" && pathname==="/users") {
+            message.warning("You are Not Authorized To View This Page")
+            router.push("/")
+
+        }
+    }, [pathname, router]);
 
     const renderContent = () => {
         if (isLoading) {

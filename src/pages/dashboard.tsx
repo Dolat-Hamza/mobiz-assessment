@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import {calculateAverageRating, countProductsByCategory} from "@/utils/ProductCalculations";
 import {ApiResponse, ProductsResponse} from "@/utils/Interfaces";
 import AverageRatingCard from "@/components/Products/AverageRating";
-import {Col} from "antd";
+import {Card, Col, Row} from "antd";
 import ProductTable from "@/components/Products/ProductTable";
 import ProductCategoryChart from "@/components/Products/ProductCategoryChart";
 import PriceDistributionChart from "@/components/Products/PriceDistributionChart";
@@ -14,6 +14,8 @@ import BrandPopularityChart from "@/components/Products/BrandPopularityChart";
 import StockLevelGauge from "@/components/Products/StockLevelGauge";
 import StockIndicator from "@/components/Products/StockIndicator";
 import PriceDisplay from "@/components/Products/PriceDisplay";
+import ProfitAnalysis from "@/components/Products/ProfitAnalysis";
+import SalesForecast from "@/components/Products/SalesForecast";
 
 const Dashboard = () => {
     const [apiResponse, setApiResponse] = useState<ApiResponse<ProductsResponse>>();
@@ -62,21 +64,70 @@ const Dashboard = () => {
 
     return (
         <Layout>
-            <DashboardLayout>
-                {/*<div>Yolo</div>*/}
-                <Col span={8}><AverageRatingCard products={products} /></Col>
-                <Col span={12}><ProductCategoryChart productCountsByCategory={productCountsByCategory} /></Col>
-                <Col span={12}><PriceDistributionChart products={products} /></Col>
-                <Col span={24}><ProductTable products={products} /></Col>
-                <Col span={24}><TopSellingProducts products={products}/></Col>
-                <Col span={24}><BrandPopularityChart products={products}/></Col>
-                <Col span={6}><StockLevelGauge products={products}/></Col>
-                {/*<Col span={6}><StockIndicator product={products}/></Col>*/}
+            <title>Mobiz Assessment || Dashboard</title>
+            <div className="p-4"> {/* Add padding to the content */}
+                <h1 className="text-3xl font-bold mb-4">Dashboard</h1> {/* Page title */}
 
+                <Row gutter={[16, 16]}>
+                    <Col xs={24} sm={12} md={8}>
+                        <Card className="shadow-md">
+                            <AverageRatingCard products={products} />
+                        </Card>
+                    </Col>
+                    <Col xs={24} sm={12} md={8}>
+                        <Card className="shadow-md">
+                            <StockLevelGauge products={products} />
+                        </Card>
+                    </Col>
+                    <Col xs={24} sm={24} md={8}>
+                        <Card className="shadow-md">
+                            <ProfitAnalysis products={products} />
+                        </Card>
+                    </Col>
+                </Row>
 
+                <Row gutter={[16, 16]} style={{ marginTop: '16px' }}>
+                    <Col xs={24} md={12}>
+                        <Card className="shadow-md">
+                            <ProductCategoryChart productCountsByCategory={productCountsByCategory} />
+                        </Card>
+                    </Col>
+                    <Col xs={24} md={12}>
+                        <Card className="shadow-md">
+                            <PriceDistributionChart products={products} />
+                        </Card>
+                    </Col>
+                </Row>
+                <Row gutter={[16, 16]} style={{ marginTop: "16px" }}>
+                    <Col xs={24} md={12}>
+                        <Card className="shadow-md">
+                            <SalesForecast products={products} />
+                        </Card>
+                    </Col>
 
+                </Row>
 
-            </DashboardLayout>
+                <Row gutter={[16, 16]} style={{ marginTop: '16px' }}>
+                    <Col xs={24} md={12}>
+                        <Card className="shadow-md">
+                            <TopSellingProducts products={products} />
+                        </Card>
+                    </Col>
+                    <Col xs={24} md={12}>
+                        <Card className="shadow-md">
+                            <BrandPopularityChart products={products} />
+                        </Card>
+                    </Col>
+                </Row>
+
+                <Row style={{ marginTop: '16px' }}>
+                    <Col span={24}>
+                        <Card className="shadow-md">
+                            <ProductTable products={products} />
+                        </Card>
+                    </Col>
+                </Row>
+            </div>
         </Layout>
     );
 };

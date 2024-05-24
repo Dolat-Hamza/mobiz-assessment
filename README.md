@@ -1,9 +1,10 @@
-
 # Mobiz Technical Assessment - Dolat Hamza
 
 ## Overview
 
-This project is built using modern web development tools and libraries to provide a robust, responsive, and interactive user experience. The primary focus is on utilizing the capabilities of Next.js for server-side rendering and static site generation, along with Ant Design for UI components and Tailwind CSS for styling.
+This project is built using modern web development tools and libraries to provide a robust, responsive, and interactive
+user experience. The primary focus is on utilizing the capabilities of Next.js for server-side rendering and static site
+generation, along with Ant Design for UI components and Tailwind CSS for styling.
 
 ## Table of Contents
 
@@ -14,25 +15,24 @@ This project is built using modern web development tools and libraries to provid
 - [Project Structure](#project-structure)
 - [Directory Structure](#directy-structure)
 
-
 ## Dependencies
 
 The project relies on the following dependencies:
 
 ```json
 "dependencies": {
-    "@ant-design/cssinjs": "^1.20.0",
-    "antd": "^5.17.3",
-    "formik": "^2.4.6",
-    "framer-motion": "^11.2.6",
-    "highcharts": "^11.4.3",
-    "highcharts-react-official": "^3.2.1",
-    "next": "14.2.3",
-    "next-auth": "^4.24.7",
-    "next-themes": "^0.3.0",
-    "react": "^18",
-    "react-dom": "^18",
-    "yup": "^1.4.0"
+"@ant-design/cssinjs": "^1.20.0",
+"antd": "^5.17.3",
+"formik": "^2.4.6",
+"framer-motion": "^11.2.6",
+"highcharts": "^11.4.3",
+"highcharts-react-official": "^3.2.1",
+"next": "14.2.3",
+"next-auth": "^4.24.7",
+"next-themes": "^0.3.0",
+"react": "^18",
+"react-dom": "^18",
+"yup": "^1.4.0"
 }
 ```
 
@@ -71,17 +71,21 @@ To set up the project locally:
 ## Usage
 
 To run the project locally:
+
 ```sh
 npm run dev
 ```
+
 This will start the development server on `http://localhost:3000`.
 
 ## External Libraries and APIs
 
 ### Dummy JSON API
+
 The project uses the Dummy JSON API (https://dummyjson.com) for fetching sample data.
 
 ### Fetch API
+
 The native Fetch API is used for making HTTP requests to external services.
 
 ## Project Structure
@@ -166,6 +170,7 @@ src
     ├── ProductCalculations.ts
     └── validation.ts
 ````
+
 ## Graphical View
 
 ![Alt text](public/images/src.png)

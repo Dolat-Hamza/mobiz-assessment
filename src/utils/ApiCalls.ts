@@ -1,6 +1,6 @@
 import {ApiResponse, ApiResponseForOthers, ProductsResponse, UpdateUserPayload, User} from "@/utils/Interfaces";
 
-const baseUrl:string = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://dummyjson.com';
+const baseUrl: string = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://dummyjson.com';
 
 export const getProducts = async (): Promise<ApiResponse<ApiResponse<any>>> => { // Use previously defined APIResponse interface
     try {
@@ -57,7 +57,7 @@ export const addUser = async (user: User): Promise<ApiResponseForOthers<any>> =>
     try {
         const response = await fetch(`${baseUrl}/users/add`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(user),
         });
 

@@ -1,5 +1,5 @@
 import UserForm from '@/components/UserForm';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import React from "react";
 import {User} from "@/utils/Interfaces";
 import {addUser} from "@/utils/ApiCalls";
@@ -14,7 +14,7 @@ const CreateUserPage: React.FC = () => {
         try {
             await addUser(values);
             actions.setSubmitting(false);
-            message.success("User Created Successfully").then(()=>{
+            message.success("User Created Successfully").then(() => {
                 router.push('/users');
 
             })
@@ -28,8 +28,8 @@ const CreateUserPage: React.FC = () => {
     return (
         <Layout>
             <div className={"flex flex-col items-center justify-center w-full h-full gap-6"}>
-            <h2 className={"text-2xl "}>Create User</h2>
-            <UserForm onSubmit={handleSubmit} />
+                <h2 className={"text-2xl "}>Create User</h2>
+                <UserForm onSubmit={handleSubmit}/>
             </div>
         </Layout>
     );

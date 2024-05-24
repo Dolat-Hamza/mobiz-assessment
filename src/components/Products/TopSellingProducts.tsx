@@ -1,12 +1,12 @@
 // components/TopSellingProducts.tsx
 import {Table, Card, Rate, Image, Typography, Avatar} from 'antd';
-import { Props } from '@/utils/Interfaces';
+import {Props} from '@/utils/Interfaces';
 import {Product} from "@/utils/Interfaces";
 import PriceDisplay from "@/components/Products/PriceDisplay";
 
-const { Text } = Typography;
+const {Text} = Typography;
 
-const TopSellingProducts: React.FC<Props> = ({ products }) => {
+const TopSellingProducts: React.FC<Props> = ({products}) => {
     // Sort by rating (descending) and take top 5
     const topProducts = products
         .sort((a, b) => b.rating - a.rating)
@@ -18,11 +18,11 @@ const TopSellingProducts: React.FC<Props> = ({ products }) => {
             dataIndex: 'thumbnail', // Image will be the first column
             key: 'thumbnail',
             render: (thumbnail: string, record: Product) => (
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <Avatar src={thumbnail} alt={record.title} shape={"square"} size={"large"} />
-                    <div style={{ marginLeft: 8 }}>
+                <div style={{display: 'flex', alignItems: 'center'}}>
+                    <Avatar src={thumbnail} alt={record.title} shape={"square"} size={"large"}/>
+                    <div style={{marginLeft: 8}}>
                         <Text strong>{record.title}</Text>
-                        <br />
+                        <br/>
                         <Text type="secondary">{record.brand}</Text>
                     </div>
                 </div>
@@ -32,18 +32,18 @@ const TopSellingProducts: React.FC<Props> = ({ products }) => {
             title: 'Rating',
             dataIndex: 'rating',
             key: 'rating',
-            render: (rating: number) => <Rate disabled defaultValue={rating} />,
+            render: (rating: number) => <Rate disabled defaultValue={rating}/>,
         },
         {
             title: 'Price',
             dataIndex: 'price',
             key: 'price',
-            render: (price: number) => <PriceDisplay price={price} />,
+            render: (price: number) => <PriceDisplay price={price}/>,
         },
     ];
 
     return (
-        <Card rootClassName={"capitalize"} title="Top Rated Products" >
+        <Card rootClassName={"capitalize"} title="Top Rated Products">
             <Table
                 columns={columns}
                 dataSource={topProducts}

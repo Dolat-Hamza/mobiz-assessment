@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion';
+import {motion} from 'framer-motion';
 
 const CallToAction = () => {
     const textVariants = {
-        hidden: { opacity: 0 },
+        hidden: {opacity: 0},
         visible: {
             opacity: 1,
             transition: {
@@ -12,8 +12,8 @@ const CallToAction = () => {
     };
 
     const letterVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0 },
+        hidden: {opacity: 0, y: 50},
+        visible: {opacity: 1, y: 0},
     };
 
     return (
@@ -33,7 +33,7 @@ const CallToAction = () => {
                 </motion.h2>
 
                 <motion.button
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{scale: 1.1}}
                     className="bg-white hover:bg-gray-200 text-blue-500 font-bold py-3 px-8 rounded-full"
                 >
                     Contact Us

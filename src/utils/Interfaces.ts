@@ -28,6 +28,7 @@ export interface APIResponse {
     skip: number;
     limit: number;
 }
+
 export interface ApiResponse<T> {
     statusCode: number;
     message: string;
@@ -40,6 +41,7 @@ export interface ApiResponse<T> {
     users?: User[]; // Add the users property
 
 }
+
 export interface ApiResponseForOthers<T> {
     statusCode: number;
     message: string;
@@ -54,12 +56,12 @@ export interface ProductsResponse {
     skip: number;
     limit: number;
 }
+
 export interface Props {
     products: Product[];
 }
 
 // utils/types.ts
-
 
 
 export interface Product {
@@ -114,6 +116,7 @@ interface Crypto {
     wallet: string;
     network: string;
 }
+
 export interface User {
     id: number;
     firstName: string;

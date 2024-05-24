@@ -1,30 +1,29 @@
 "use client"; // For client components in Next.js 13
 
 import React, {useEffect, useState} from "react";
-import { motion } from "framer-motion";
-import { MenuOutlined } from "@ant-design/icons";
+import {motion} from "framer-motion";
+import {MenuOutlined} from "@ant-design/icons";
 import Logo from "@/components/Common/Logo";
 import Link from "next/link";
-import { signOut, useSession } from "next-auth/react";
+import {signOut, useSession} from "next-auth/react";
 import {Avatar, Button, Drawer, Dropdown, Menu} from "antd";
-import { useRouter } from "next/navigation";
-import { useTheme } from "@/context/ThemeContext";
+import {useRouter} from "next/navigation";
+import {useTheme} from "@/context/ThemeContext";
 import ThemeSwitch from "@/components/Common/ThemeSwitch";
 
 interface NavbarProps {
     onMenuClick: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
+const Navbar: React.FC<NavbarProps> = ({onMenuClick}) => {
     const logoVariants = {
-        initial: { opacity: 0 },
-        animate: { opacity: 1, transition: { duration: 1 } },
+        initial: {opacity: 0},
+        animate: {opacity: 1, transition: {duration: 1}},
     };
-    const { data: session, status } = useSession();
+    const {data: session, status} = useSession();
 
     const router = useRouter();
-    const { theme } = useTheme(); // Get the current theme from context
-
+    const {theme} = useTheme(); // Get the current theme from context
 
 
     useEffect(() => {
@@ -34,8 +33,8 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
     }, [theme]);
 
     const navLinkVariants = {
-        initial: { opacity: 0, y: -20 },
-        animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+        initial: {opacity: 0, y: -20},
+        animate: {opacity: 1, y: 0, transition: {duration: 0.5}},
     };
 
     const menuItems = [
@@ -46,7 +45,7 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
             label: <Link href="/dashboard">Dashboard</Link>,
             key: "dashboard",
         },
-        session?.user.role === "admin" &&  {
+        session?.user.role === "admin" && {
             label: <Link href="/users">Users</Link>,
             key: "users",
         },
@@ -85,11 +84,11 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
 
                 {/* Logo (Animated with Framer Motion) */}
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, transition: { duration: 1 } }}
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1, transition: {duration: 1}}}
                 >
                     <Link href="/">
-                        <Logo src="/images/logo.png" />
+                        <Logo src="/images/logo.png"/>
                     </Link>
                 </motion.div>
 
@@ -118,21 +117,21 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
 
                     {/* Theme Switch (Hidden on mobile) */}
                     <div className="hidden md:block">
-                        <ThemeSwitch />
+                        <ThemeSwitch/>
                     </div>
 
                     {/* User Profile (Only shown on desktop) */}
                     {status === "authenticated" && (
                         <div className="flex flex-row gap-4 items-center justify-end">
 
-                            <Avatar src={session?.user?.image} shape="square" size="large" />
+                            <Avatar src={session?.user?.image} shape="square" size="large"/>
                             <motion.p
                                 animate={{
                                     opacity: 1,
                                     y: 0,
-                                    transition: { duration: 0.5, delay: 0.2 },
+                                    transition: {duration: 0.5, delay: 0.2},
                                 }}
-                                whileHover={{ scale: 1.1 }}
+                                whileHover={{scale: 1.1}}
                                 className="text-xs cursor-pointer"
                             >
                                 {session?.user?.name}
@@ -152,19 +151,19 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
                 onClose={onClose}
                 visible={visibleDrawer}
             >
-                <Menu items={menuItems} />
+                <Menu items={menuItems}/>
                 {/* Include ThemeSwitch and user profile for mobile */}
                 <div className={"flex flex-row gap-4 items-center justify-between"}>
-                <ThemeSwitch />
-                {status === "authenticated" && (
-                    <div className="flex flex-row gap-4 items-center">
-                        <Avatar src={session?.user?.image} shape="square" size="large" />
-                        <p className="text-xs">{session?.user?.name}</p>
-                        <Button onClick={handleLogout} className={`text-${
-                            theme === "light" ? "gray-800" : "gray-200"
-                        } hover:text-blue-500`}>Logout</Button>
-                    </div>
-                )}
+                    <ThemeSwitch/>
+                    {status === "authenticated" && (
+                        <div className="flex flex-row gap-4 items-center">
+                            <Avatar src={session?.user?.image} shape="square" size="large"/>
+                            <p className="text-xs">{session?.user?.name}</p>
+                            <Button onClick={handleLogout} className={`text-${
+                                theme === "light" ? "gray-800" : "gray-200"
+                            } hover:text-blue-500`}>Logout</Button>
+                        </div>
+                    )}
                 </div>
             </Drawer>
         </motion.nav>

@@ -1,11 +1,11 @@
 // components/SalesForecast.tsx
 import React from "react";
-import { Card } from "antd";
+import {Card} from "antd";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import { Props } from "@/utils/Interfaces";
+import {Props} from "@/utils/Interfaces";
 
-const SalesForecast: React.FC<Props> = ({ products }) => {
+const SalesForecast: React.FC<Props> = ({products}) => {
     // Sample historical sales data (you'll replace this with actual data)
     const historicalSales = [120, 135, 150, 168, 182, 195, 210]; // Example: Sales per week
 
@@ -65,8 +65,8 @@ const SalesForecast: React.FC<Props> = ({ products }) => {
     };
 
     return (
-        <Card title="Sales Forecast" style={{ width: '100%' }}>
-            <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+        <Card title="Sales Forecast" style={{width: '100%'}}>
+            <HighchartsReact highcharts={Highcharts} options={chartOptions}/>
         </Card>
     );
 };

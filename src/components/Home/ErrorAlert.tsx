@@ -1,10 +1,10 @@
-import { Alert } from 'antd';
+import {Alert} from 'antd';
 
 interface ErrorAlertProps {
     message: string;
 }
 
-const ErrorAlert: React.FC<ErrorAlertProps> = ({ message }) => {
+const ErrorAlert: React.FC<ErrorAlertProps> = ({message}) => {
     return (
         <Alert
             message="Error"

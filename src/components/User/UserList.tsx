@@ -1,14 +1,14 @@
-import { List, Avatar, Typography } from "antd";
+import {List, Avatar, Typography} from "antd";
 import Link from "next/link";
 import {User} from "@/utils/Interfaces";
 
-const { Text } = Typography;
+const {Text} = Typography;
 
 interface UserListProps {
     users: User[];
 }
 
-const UserList: React.FC<UserListProps> = ({ users }) => {
+const UserList: React.FC<UserListProps> = ({users}) => {
     return (
         <List
             rootClassName={"w-full bg-white rounded-md p-4"}
@@ -20,7 +20,7 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
                     <Link key={index} href={`/users/${user.id}`}>View</Link>
                 ]}>
                     <List.Item.Meta
-                        avatar={<Avatar src={user?.image} />}
+                        avatar={<Avatar src={user?.image}/>}
                         title={<Text strong>{user.firstName + " " + user.lastName}</Text>}
                         description={user.email}
                     />

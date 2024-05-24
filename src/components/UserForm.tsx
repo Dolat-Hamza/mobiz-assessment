@@ -91,7 +91,7 @@ const UserForm: React.FC<UserFormProps> = ({initialValues, onSubmit}) => {
             enableReinitialize
         >
             {({errors, touched, handleChange, handleBlur, values}) => (
-                <Form rootClassName={"bg-white w-4/5 p-6 rounded-md"} layout="vertical" >
+                <Form rootClassName={"bg-white w-4/5 p-6 rounded-md"} layout="vertical">
                     <Form.Item label="First Name" required>
                         <Input
                             name="firstName"
@@ -128,18 +128,18 @@ const UserForm: React.FC<UserFormProps> = ({initialValues, onSubmit}) => {
                     )}
                 </Form.Item>
                     <Form.Item label="Password" required>
-                    <Input
-                        name="password"
-                        type="password"
-                        placeholder="Enter Password"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.password}
-                    />
-                    {errors.password && touched.password && (
-                        <div className="error">{errors.password}</div>
-                    )}
-                </Form.Item>
+                        <Input
+                            name="password"
+                            type="password"
+                            placeholder="Enter Password"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.password}
+                        />
+                        {errors.password && touched.password && (
+                            <div className="error">{errors.password}</div>
+                        )}
+                    </Form.Item>
 
 
                     <Form.Item>

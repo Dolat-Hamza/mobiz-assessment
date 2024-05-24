@@ -1,20 +1,20 @@
-import { NextPage } from "next";
-import { Alert, message, Spin, Typography } from 'antd';
-import { useEffect, useState } from "react";
-import { User } from "@/utils/Interfaces";
-import { getUsers } from "@/utils/ApiCalls";
+import {NextPage} from "next";
+import {Alert, message, Spin, Typography} from 'antd';
+import {useEffect, useState} from "react";
+import {User} from "@/utils/Interfaces";
+import {getUsers} from "@/utils/ApiCalls";
 import UserList from "@/components/User/UserList";
 import Layout from "@/components/Common/Layout";
-import { useSession } from "next-auth/react";
-import { usePathname, useRouter } from "next/navigation";
+import {useSession} from "next-auth/react";
+import {usePathname, useRouter} from "next/navigation";
 
-const { Title } = Typography;
+const {Title} = Typography;
 
 const UsersPage: NextPage = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const { data: session, status } = useSession();
+    const {data: session, status} = useSession();
     const router = useRouter();
     const pathname = usePathname();
 
@@ -42,12 +42,12 @@ const UsersPage: NextPage = () => {
 
     const renderContent = () => {
         if (isLoading) {
-            return <Spin size="large" tip="Loading users..." />;
+            return <Spin size="large" tip="Loading users..."/>;
         }
         if (error) {
-            return <Alert message={error} type="error" showIcon />;
+            return <Alert message={error} type="error" showIcon/>;
         }
-        return <UserList users={users} />;
+        return <UserList users={users}/>;
     };
 
     return (

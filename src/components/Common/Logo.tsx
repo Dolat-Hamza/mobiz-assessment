@@ -1,25 +1,25 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { Typography } from "antd";
+import {motion} from "framer-motion";
+import {Typography} from "antd";
 import Image from "next/image";
 
-const { Title } = Typography;
+const {Title} = Typography;
 
 interface LogoProps {
     src: string;
     text?: string;
 }
 
-const Logo: React.FC<LogoProps> = ({ src, text }) => {
+const Logo: React.FC<LogoProps> = ({src, text}) => {
     const logoVariants = {
-        initial: { opacity: 0, scale: 0.8 },
-        animate: { opacity: 1, scale: 1, transition: { duration: 1 } }, // Smooth entrance
-        hover: { scale: 1.1 }, // Scale up on hover
+        initial: {opacity: 0, scale: 0.8},
+        animate: {opacity: 1, scale: 1, transition: {duration: 1}}, // Smooth entrance
+        hover: {scale: 1.1}, // Scale up on hover
     };
 
     const textVariants = {
-        initial: { opacity: 0, y: -10 },
-        animate: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.2 } }, // Delayed text appearance
+        initial: {opacity: 0, y: -10},
+        animate: {opacity: 1, y: 0, transition: {duration: 0.5, delay: 0.2}}, // Delayed text appearance
         // hover: { textShadow: "0px 0px 2px rgba(0, 0, 0, 0.5)" }, // Add text shadow on hover
     };
 

@@ -3,7 +3,7 @@ interface Props {
     price: number;
 }
 
-const PriceDisplay: React.FC<Props> = ({ price }) => (
+const PriceDisplay: React.FC<Props> = ({price}) => (
     <span>${price.toFixed(2)}</span>
 );
 

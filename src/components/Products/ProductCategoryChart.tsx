@@ -1,7 +1,7 @@
 // components/ProductCategoryChart.tsx
 
 import React, {useEffect} from 'react';
-import { Card } from 'antd';
+import {Card} from 'antd';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import {useTheme} from "@/context/ThemeContext";
@@ -10,7 +10,7 @@ interface Props {
     productCountsByCategory: Record<string, number>;
 }
 
-const ProductCategoryChart: React.FC<Props> = ({ productCountsByCategory }) => {
+const ProductCategoryChart: React.FC<Props> = ({productCountsByCategory}) => {
     const categories = Object.keys(productCountsByCategory);
     const data = Object.values(productCountsByCategory);
 
@@ -78,7 +78,7 @@ const ProductCategoryChart: React.FC<Props> = ({ productCountsByCategory }) => {
             },
         ],
     };
-    const { theme } = useTheme();
+    const {theme} = useTheme();
 
     useEffect(() => {
         if (theme === 'dark') {
@@ -88,8 +88,8 @@ const ProductCategoryChart: React.FC<Props> = ({ productCountsByCategory }) => {
         }
     }, [theme]);
     return (
-        <Card title="Product Categories by Count" style={{ width: '100%' }}>
-            <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+        <Card title="Product Categories by Count" style={{width: '100%'}}>
+            <HighchartsReact highcharts={Highcharts} options={chartOptions}/>
         </Card>
     );
 };

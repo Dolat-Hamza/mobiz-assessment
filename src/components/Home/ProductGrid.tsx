@@ -1,5 +1,5 @@
-import { Card, Col, Row, Rate, Image } from 'antd';
-import { motion } from 'framer-motion';
+import {Card, Col, Row, Rate, Image} from 'antd';
+import {motion} from 'framer-motion';
 import PriceDisplay from "@/components/Products/PriceDisplay";
 import {Product} from "@/utils/Interfaces";
 
@@ -7,10 +7,10 @@ interface ProductGridProps {
     products: Product[];
 }
 
-const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
+const ProductGrid: React.FC<ProductGridProps> = ({products}) => {
     const cardVariants = {
-        hidden: { opacity: 0, scale: 0.9 },
-        visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
+        hidden: {opacity: 0, scale: 0.9},
+        visible: {opacity: 1, scale: 1, transition: {duration: 0.4}},
     };
 
     return (
@@ -33,9 +33,9 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products }) => {
                                 title={product.title}
                                 description={
                                     <>
-                                        <Rate disabled allowHalf defaultValue={product.rating} />
-                                        <br />
-                                        <PriceDisplay price={product.price} />
+                                        <Rate disabled allowHalf defaultValue={product.rating}/>
+                                        <br/>
+                                        <PriceDisplay price={product.price}/>
                                     </>
                                 }
                             />

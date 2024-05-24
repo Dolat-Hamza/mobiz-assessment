@@ -15,10 +15,12 @@ export const useTheme = () => {
     }
     return context;
 };
+
 interface LayoutProps {
     children: ReactNode; // Define the children prop
 }
-export const ThemeProvider: React.FC<LayoutProps> = ({ children }) => {
+
+export const ThemeProvider: React.FC<LayoutProps> = ({children}) => {
     const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
     useEffect(() => {
@@ -41,7 +43,7 @@ export const ThemeProvider: React.FC<LayoutProps> = ({ children }) => {
     };
 
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <ThemeContext.Provider value={{theme, toggleTheme}}>
             {children}
         </ThemeContext.Provider>
     );

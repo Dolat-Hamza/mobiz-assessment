@@ -1,7 +1,7 @@
 "use client" // For client components in Next.js 13
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, {useState} from "react";
+import {motion} from "framer-motion";
 import Sidebar from "./Sidebar";
 import Navbar from "@/components/Common/Navbar";
 import Footer from "@/components/Common/Footer";
@@ -10,14 +10,14 @@ interface LayoutProps {
     children: React.ReactNode;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({children}) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
     const contentVariants = {
-        sidebarOpen: { marginLeft: 250 }, // Adjust to match sidebar width
-        sidebarClosed: { marginLeft: 0 },
+        sidebarOpen: {marginLeft: 250}, // Adjust to match sidebar width
+        sidebarClosed: {marginLeft: 0},
     };
 
     return (

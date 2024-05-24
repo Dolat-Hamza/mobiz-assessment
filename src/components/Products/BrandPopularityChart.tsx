@@ -1,12 +1,12 @@
 // components/BrandPopularityChart.tsx
 import React from 'react';
-import { Card } from 'antd';
+import {Card} from 'antd';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import { Props } from '@/utils/Interfaces';
-import { countProductsByBrand } from '@/utils/ProductCalculations';
+import {Props} from '@/utils/Interfaces';
+import {countProductsByBrand} from '@/utils/ProductCalculations';
 
-const BrandPopularityChart: React.FC<Props> = ({ products }) => {
+const BrandPopularityChart: React.FC<Props> = ({products}) => {
     const brandCounts = countProductsByBrand(products);
     const brands = Object.keys(brandCounts);
     const data = brands.map(brand => ({
@@ -71,7 +71,7 @@ const BrandPopularityChart: React.FC<Props> = ({ products }) => {
         //     symbolWidth: 12,
         //     symbolRadius: 6,
         // },
-        legend:{
+        legend: {
             enabled: true
 
         },

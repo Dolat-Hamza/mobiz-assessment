@@ -27,8 +27,8 @@ const nextConfig = {
         "rc-util",
         "rc-tree",
         "rc-tooltip"
-    ],images:{
-        domains:["cdn.dummyjson.com"]
+    ], images: {
+        domains: ["cdn.dummyjson.com"]
     }
 }
 

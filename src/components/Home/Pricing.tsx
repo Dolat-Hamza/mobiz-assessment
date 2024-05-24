@@ -1,20 +1,25 @@
 // components/LandingPage/Pricing.tsx
 
 import React from 'react';
-import { Card, Row, Col, Button, Tag } from 'antd';
-import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
-import { motion } from 'framer-motion';
+import {Card, Row, Col, Button, Tag} from 'antd';
+import {CheckOutlined, CloseOutlined} from '@ant-design/icons';
+import {motion} from 'framer-motion';
 
 const pricingPlans = [
-    { name: 'Basic', price: '$19', features: ['10GB Storage', '5 Users', 'Email Support'], isRecommended: false },
-    { name: 'Pro', price: '$49', features: ['50GB Storage', '20 Users', 'Priority Support'], isRecommended: true },
-    { name: 'Enterprise', price: '$99', features: ['Unlimited Storage', 'Unlimited Users', 'Dedicated Support'], isRecommended: false },
+    {name: 'Basic', price: '$19', features: ['10GB Storage', '5 Users', 'Email Support'], isRecommended: false},
+    {name: 'Pro', price: '$49', features: ['50GB Storage', '20 Users', 'Priority Support'], isRecommended: true},
+    {
+        name: 'Enterprise',
+        price: '$99',
+        features: ['Unlimited Storage', 'Unlimited Users', 'Dedicated Support'],
+        isRecommended: false
+    },
 ];
 
 const Pricing: React.FC = () => {
     const cardVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+        hidden: {opacity: 0, y: 20},
+        visible: {opacity: 1, y: 0, transition: {duration: 0.8}},
     };
 
     return (
@@ -38,7 +43,7 @@ const Pricing: React.FC = () => {
                                     <ul>
                                         {plan.features.map((feature, index) => (
                                             <li key={index} className="flex items-center mb-2">
-                                                <CheckOutlined className="text-green-500 mr-2" />
+                                                <CheckOutlined className="text-green-500 mr-2"/>
                                                 {feature}
                                             </li>
                                         ))}

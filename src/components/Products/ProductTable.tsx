@@ -6,11 +6,12 @@ import Image from "next/image";
 import React, {useEffect, useState} from "react";
 import {SearchOutlined} from "@ant-design/icons";
 import {Product} from "@/utils/Interfaces";
+
 interface Props {
     products: Product[]; // Use the Product interface from earlier
 }
 
-const ProductTable: React.FC<Props> = ({ products }) => {
+const ProductTable: React.FC<Props> = ({products}) => {
     const [searchText, setSearchText] = useState('');
     const [filteredProducts, setFilteredProducts] = useState(products);
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -41,26 +42,26 @@ const ProductTable: React.FC<Props> = ({ products }) => {
                 <Avatar
                     src={thumbnail}
                     alt="Product Image"
-                   size={50}
+                    size={50}
                     shape={"square"}
                 />
             ),
         },
-        { title: 'Title', dataIndex: 'title', key: 'title' },
-        { title: 'Description', dataIndex: 'description', key: 'description' },
+        {title: 'Title', dataIndex: 'title', key: 'title'},
+        {title: 'Description', dataIndex: 'description', key: 'description'},
         {
             title: 'Price',
             dataIndex: 'price',
             key: 'price',
             render: (price: number, record: Product) => <PriceDisplay price={record.price}/>
         },
-        { title: 'Category', dataIndex: 'category', key: 'category' },
-        { title: 'Brand', dataIndex: 'brand', key: 'brand' },
+        {title: 'Category', dataIndex: 'category', key: 'category'},
+        {title: 'Brand', dataIndex: 'brand', key: 'brand'},
         {
             title: 'Stock',
             dataIndex: 'stock',
             key: 'stock',
-            render: (stock: number, record: Product) => <StockIndicator product={record} />
+            render: (stock: number, record: Product) => <StockIndicator product={record}/>
         },
         {
             title: 'Units Left',
@@ -71,11 +72,11 @@ const ProductTable: React.FC<Props> = ({ products }) => {
     ];
 
     return (
-        <Card rootClassName={"capitalize"} title="Products Table" style={{ width: '100%' }}>
-            <Space direction="horizontal" style={{ marginBottom: 16 }}>
+        <Card rootClassName={"capitalize"} title="Products Table" style={{width: '100%'}}>
+            <Space direction="horizontal" style={{marginBottom: 16}}>
                 <Input
                     placeholder="Search by title"
-                    prefix={<SearchOutlined />}
+                    prefix={<SearchOutlined/>}
                     onChange={(e) => handleSearch(e.target.value)}
                     allowClear
                 />
@@ -83,7 +84,7 @@ const ProductTable: React.FC<Props> = ({ products }) => {
                     placeholder="Filter by category"
                     onChange={handleCategoryChange}
                     allowClear
-                    style={{ width: 200 }}
+                    style={{width: 200}}
                 >
                     {[...new Set(products.map((product) => product.category))].map(
                         (category) => (
@@ -97,10 +98,10 @@ const ProductTable: React.FC<Props> = ({ products }) => {
             <Table
                 columns={columns}
                 dataSource={filteredProducts}
-                pagination={{ pageSize: 10 }}
-                scroll={{ x: 1200 }}
+                pagination={{pageSize: 10}}
+                scroll={{x: 1200}}
             />
-        </Card>    );
+        </Card>);
 };
 
 export default ProductTable;

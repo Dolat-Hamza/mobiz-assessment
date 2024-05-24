@@ -63,7 +63,8 @@ const Dashboard = () => {
 
     return (
         <Layout>
-            <div className="p-6 flex flex-col items-center justify-center gap-6 w-full  bg-gray-200"> {/* Add padding to the content */}
+            <div
+                className="p-6 flex flex-col items-center justify-center gap-6 w-full  bg-gray-200"> {/* Add padding to the content */}
                 <motion.h1
                     initial={{opacity: 0, y: -20}}
                     animate={{opacity: 1, y: 0, transition: {duration: 0.8}}}
@@ -91,7 +92,7 @@ const Dashboard = () => {
 
                 </Row>
 
-                <Row className={"w-full"} gutter={[16, 16]} >
+                <Row className={"w-full"} gutter={[16, 16]}>
                     <Col xs={24} md={12}>
                         <Card className="shadow-md">
                             <ProductCategoryChart productCountsByCategory={productCountsByCategory}/>
@@ -103,7 +104,7 @@ const Dashboard = () => {
                         </Card>
                     </Col>
                 </Row>
-                <Row className={"w-full h-full "} gutter={[16, 16]} >
+                <Row className={"w-full h-full "} gutter={[16, 16]}>
                     <Col xs={24} sm={24} md={12}>
                         <Card className="shadow-md">
                             <SalesForecast products={products}/>
@@ -111,14 +112,14 @@ const Dashboard = () => {
 
                     </Col>
                     <Col xs={24} sm={24} md={12}>
-                        <Card  className="shadow-md h-full">
+                        <Card className="shadow-md h-full">
                             <ProfitAnalysis products={products}/>
                         </Card>
                     </Col>
 
                 </Row>
 
-                <Row className={"w-full"} gutter={[16, 16]} >
+                <Row className={"w-full"} gutter={[16, 16]}>
                     <Col xs={24} md={12}>
                         <Card className="shadow-md">
                             <TopSellingProducts products={products}/>
@@ -131,7 +132,7 @@ const Dashboard = () => {
                     </Col>
                 </Row>
 
-                <Row className={"w-full"} >
+                <Row className={"w-full"}>
                     <Col span={24}>
                         <Card className="shadow-md">
                             <ProductTable products={products}/>

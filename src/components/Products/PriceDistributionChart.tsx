@@ -1,11 +1,11 @@
 // components/PriceDistributionChart.tsx
 import React from 'react';
-import { Card } from 'antd';
+import {Card} from 'antd';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import { Props } from '@/utils/Interfaces';
+import {Props} from '@/utils/Interfaces';
 
-const PriceDistributionChart: React.FC<Props> = ({ products }) => {
+const PriceDistributionChart: React.FC<Props> = ({products}) => {
     const priceRanges = [0, 100, 200, 300, 400, 500, 600];
     const priceCounts = priceRanges.map((range) =>
         products.filter((p) => p.price >= range && p.price < range + 100).length
@@ -76,8 +76,8 @@ const PriceDistributionChart: React.FC<Props> = ({ products }) => {
     };
 
     return (
-        <Card title="Price Distribution" style={{ width: '100%' }}>
-            <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+        <Card title="Price Distribution" style={{width: '100%'}}>
+            <HighchartsReact highcharts={Highcharts} options={chartOptions}/>
         </Card>
     );
 };

@@ -1,14 +1,14 @@
 "use client"; // For client components in Next.js 13
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, {useState} from "react";
+import {motion, AnimatePresence} from "framer-motion";
 
 interface SidebarProps {
     isOpen: boolean;
     onClose: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+const Sidebar: React.FC<SidebarProps> = ({isOpen, onClose}) => {
     const sidebarVariants = {
         open: {
             width: 250,

@@ -35,7 +35,7 @@ const AverageRatingCard: React.FC<Props> = ({ products }) => {
                         <Progress
                             percent={(count / totalRatings) * 100}
                             showInfo={false}
-                            strokeColor="#1890ff"
+                            strokeColor="#FFA500"
                             style={{ width: 200, marginLeft: 8 }}
                         />
                         <span style={{ marginLeft: 8 }}>{count} ratings</span>

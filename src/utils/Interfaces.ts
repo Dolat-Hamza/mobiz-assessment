@@ -1,3 +1,12 @@
+export interface Review {
+    id: number;
+    userId: number;
+    productId: number;
+    comment: string;
+    rating: number;
+    reviewerName: string;
+}
+
 export interface Product {
     id: number;
     title: string;
@@ -10,6 +19,7 @@ export interface Product {
     category: string;
     thumbnail: string;
     images: string[];
+    reviews?: Review[];
 }
 
 export interface APIResponse {

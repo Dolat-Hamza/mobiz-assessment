@@ -56,7 +56,6 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
         },
     ].filter((item): item is { label: JSX.Element; key: string } => Boolean(item)); // Filter out false values and ensure the type
 
-    console.log("HERE IS THE NEW SESSIOn",session)
     const handleLogout = () => {
         signOut();
         router.push("/auth/login");

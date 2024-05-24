@@ -9,6 +9,8 @@ function MyApp({Component, pageProps}: AppProps) {
 
     return (
         <ThemeProvider>
+            <title>Mobiz Assessment</title>
+
             <SessionProvider session={pageProps.session}>
                 <RequireAuth>
                     <Component {...pageProps} />

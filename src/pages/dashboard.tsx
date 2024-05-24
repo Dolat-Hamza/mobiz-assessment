@@ -14,6 +14,8 @@ import StockLevelGauge from "@/components/Products/StockLevelGauge";
 import ProfitAnalysis from "@/components/Products/ProfitAnalysis";
 import SalesForecast from "@/components/Products/SalesForecast";
 import {motion} from "framer-motion";
+import LoadingSpinner from "@/components/Home/LoadingSpinner";
+import Review from "@/components/Products/Review";
 
 const Dashboard = () => {
     const [apiResponse, setApiResponse] = useState<ApiResponse<ProductsResponse>>();
@@ -21,7 +23,6 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await getProducts();
-            console.log("YOOO", response)
             // Check for success and extract data
             if (response.statusCode === 200 && response.data) {
                 setApiResponse(
@@ -52,21 +53,17 @@ const Dashboard = () => {
 
     if (!apiResponse || !apiResponse?.data?.products) {
         return (
-            <div>
-                {apiResponse?.message || "Loading products..."}
-            </div>
+            <LoadingSpinner/>
         )
     }
 
 
     const averageRating = calculateAverageRating(products);
     const productCountsByCategory = countProductsByCategory(products);
-    console.log(productCountsByCategory)
 
     return (
         <Layout>
-            <title>Mobiz Assessment || Dashboard</title>
-            <div className="p-4"> {/* Add padding to the content */}
+            <div className="p-6 flex flex-col items-center justify-center gap-6 w-full  bg-gray-200"> {/* Add padding to the content */}
                 <motion.h1
                     initial={{opacity: 0, y: -20}}
                     animate={{opacity: 1, y: 0, transition: {duration: 0.8}}}
@@ -75,7 +72,7 @@ const Dashboard = () => {
                     Dashboard
                 </motion.h1>
 
-                <Row gutter={[16, 16]}>
+                <Row className={"w-full h-full"} gutter={[16, 16]}>
                     <Col xs={24} sm={12} md={8}>
                         <Card className="shadow-md">
                             <AverageRatingCard products={products}/>
@@ -86,14 +83,15 @@ const Dashboard = () => {
                             <StockLevelGauge products={products}/>
                         </Card>
                     </Col>
-                    <Col xs={24} sm={24} md={8}>
+                    <Col xs={24} sm={12} md={8}>
                         <Card className="shadow-md">
-                            <ProfitAnalysis products={products}/>
+                            <Review/>
                         </Card>
                     </Col>
+
                 </Row>
 
-                <Row gutter={[16, 16]} style={{marginTop: '16px'}}>
+                <Row className={"w-full"} gutter={[16, 16]} >
                     <Col xs={24} md={12}>
                         <Card className="shadow-md">
                             <ProductCategoryChart productCountsByCategory={productCountsByCategory}/>
@@ -105,16 +103,22 @@ const Dashboard = () => {
                         </Card>
                     </Col>
                 </Row>
-                <Row gutter={[16, 16]} style={{marginTop: "16px"}}>
-                    <Col xs={24} md={24}>
+                <Row className={"w-full h-full "} gutter={[16, 16]} >
+                    <Col xs={24} sm={24} md={12}>
                         <Card className="shadow-md">
                             <SalesForecast products={products}/>
+                        </Card>
+
+                    </Col>
+                    <Col xs={24} sm={24} md={12}>
+                        <Card  className="shadow-md h-full">
+                            <ProfitAnalysis products={products}/>
                         </Card>
                     </Col>
 
                 </Row>
 
-                <Row gutter={[16, 16]} style={{marginTop: '16px'}}>
+                <Row className={"w-full"} gutter={[16, 16]} >
                     <Col xs={24} md={12}>
                         <Card className="shadow-md">
                             <TopSellingProducts products={products}/>
@@ -127,7 +131,7 @@ const Dashboard = () => {
                     </Col>
                 </Row>
 
-                <Row style={{marginTop: '16px'}}>
+                <Row className={"w-full"} >
                     <Col span={24}>
                         <Card className="shadow-md">
                             <ProductTable products={products}/>

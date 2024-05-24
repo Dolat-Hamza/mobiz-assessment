@@ -1,14 +1,15 @@
 import React from 'react';
-import Document, { Head, Html, Main, NextScript } from 'next/document';
-import type { DocumentContext } from 'next/document';
+import {Head, Html, Main, NextScript} from 'next/document';
 
 const MyDocument = () => (
     <Html lang="en">
-        <Head />
-        <body>
-        <Main />
-        <NextScript />
-        </body>
+            <Head>
+                    <link rel="icon" href="/favicon.ico"/>
+            </Head>
+            <body>
+            <Main/>
+            <NextScript/>
+            </body>
     </Html>
 );
 

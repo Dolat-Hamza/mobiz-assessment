@@ -24,7 +24,6 @@ const LandingPage: React.FC = () => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await getProducts();
-            console.log("YOOO", response);
             // Check for success and extract data
             if (response.statusCode === 200 && response.data) {
                 setApiResponse({

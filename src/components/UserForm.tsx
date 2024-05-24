@@ -13,7 +13,6 @@ interface UserFormProps {
 }
 
 const UserForm: React.FC<UserFormProps> = ({initialValues, onSubmit}) => {
-    console.log(initialValues)
     const router = useRouter();
     const searchParam = useSearchParams()
     const pathname = usePathname()

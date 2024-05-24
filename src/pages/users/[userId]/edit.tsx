@@ -24,7 +24,7 @@ const EditUserPage: NextPage<EditUserPageProps> = ({}) => {
     const {query} = useRouter();
 
     const parsedUserId = parseInt(query.userId as string);
-    console.log(parsedUserId)
+
 
     useEffect(() => {
         const fetchData = async () => {

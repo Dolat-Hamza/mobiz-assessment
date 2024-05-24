@@ -11,7 +11,7 @@ const ProfitAnalysis: React.FC<Props> = ({ products }) => {
         (sum, p) => sum + (p.price - p.price * p.discountPercentage / 100),
         0
     );
-    console.log(products)
+
     const columns = [
         { title: "Product", dataIndex: "title", key: "title" },
         { title: "Profit", dataIndex: "price", key: "price", render: (price: number, record: Product) => <PriceDisplay price={price - price * record.discountPercentage / 100} /> },
@@ -19,9 +19,13 @@ const ProfitAnalysis: React.FC<Props> = ({ products }) => {
     ];
 
     return (
-        <Card title="Profit Analysis" rootClassName={"w-full max-h-96 overflow-y-scroll"}>
+        <Card title="Profit Analysis" rootClassName={"w-full h-full overflow-y-scroll"}>
             <Statistic title="Total Profit" value={totalProfit.toFixed(2)} prefix="$" />
-            <Table columns={columns} dataSource={products}  />
+            <Table pagination={{
+                pageSize: 3,
+                showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
+
+            }} columns={columns} dataSource={products}  />
         </Card>
     );
 };

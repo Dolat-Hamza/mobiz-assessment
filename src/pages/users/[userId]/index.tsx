@@ -1,6 +1,5 @@
 import {NextPage} from "next";
 import {useRouter} from "next/router";
-
 import {Alert, Spin} from 'antd';
 import {ParsedUrlQuery} from "querystring";
 import {User} from "@/utils/Interfaces";
@@ -8,13 +7,13 @@ import {useEffect, useState} from "react";
 import {getSingleUserById} from "@/utils/ApiCalls";
 import UserView from "@/components/User/UserView";
 import Layout from "@/components/Common/Layout";
+import {motion} from "framer-motion";
 
 interface UserViewPageProps extends ParsedUrlQuery {
     userId: string;
 }
 
 const UserViewPage: NextPage<UserViewPageProps> = ({userId}) => {
-    const router = useRouter();
     const [user, setUser] = useState<User | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -34,20 +33,40 @@ const UserViewPage: NextPage<UserViewPageProps> = ({userId}) => {
             }
         };
         fetchData();
-    }, [parsedUserId]); // Include userId in the dependency array
-
+    }, [parsedUserId]);
 
     return (
         <Layout>
-            <div>
+            <div className="min-h-screen w-full flex flex-col gap-6 items-center justify-center bg-gray-100 p-4">
+                <h1 className={" text-2xl font-bold"}>User {parsedUserId} Profile</h1>
                 {isLoading ? (
-                    <Spin size="large"/>
+                    <div className="flex w-4/5 justify-center items-center">
+                        <Spin size="large"/>
+                    </div>
                 ) : error ? (
-                    <Alert message={error} type="error"/>
+                    <motion.div
+                        initial={{opacity: 0, y: -20}}
+                        animate={{opacity: 1, y: 0}}
+                        className="w-full max-w-md"
+                    >
+                        <Alert message={error} type="error" showIcon/>
+                    </motion.div>
                 ) : user ? (
-                    <UserView user={user}/>
+                    <motion.div
+                        initial={{opacity: 0, y: -20}}
+                        animate={{opacity: 1, y: 0}}
+                        className=" w-4/5 bg-white rounded-lg shadow-lg p-6"
+                    >
+                        <UserView user={user}/>
+                    </motion.div>
                 ) : (
-                    <Alert message="User not found" type="warning"/>
+                    <motion.div
+                        initial={{opacity: 0, y: -20}}
+                        animate={{opacity: 1, y: 0}}
+                        className="w-full max-w-md"
+                    >
+                        <Alert message="User not found" type="warning" showIcon/>
+                    </motion.div>
                 )}
             </div>
         </Layout>

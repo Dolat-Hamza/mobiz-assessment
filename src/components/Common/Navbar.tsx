@@ -7,7 +7,7 @@ import Logo from "@/components/Common/Logo";
 import Link from "next/link";
 import {signOut, useSession} from "next-auth/react";
 import {Avatar, Button, Drawer, Dropdown, Menu} from "antd";
-import {useRouter} from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import {useTheme} from "@/context/ThemeContext";
 import ThemeSwitch from "@/components/Common/ThemeSwitch";
 
@@ -23,6 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({onMenuClick}) => {
     const {data: session, status} = useSession();
 
     const router = useRouter();
+    const pathname = usePathname()
     const {theme} = useTheme(); // Get the current theme from context
 
 
@@ -36,11 +37,20 @@ const Navbar: React.FC<NavbarProps> = ({onMenuClick}) => {
         initial: {opacity: 0, y: -20},
         animate: {opacity: 1, y: 0, transition: {duration: 0.5}},
     };
+    const [activeKey, setActiveKey] = useState(""); // Default to "home"
+
+    useEffect(() => {
+        if (pathname) {
+            const baseRoute = pathname.split("/")[1];
+
+            setActiveKey(baseRoute);
+        }
+    }, [pathname]);
 
     const menuItems = [
         {
             label: <Link href="/">Home</Link>,
-            key: "home",
+            key: "",
         }, {
             label: <Link href="/dashboard">Dashboard</Link>,
             key: "dashboard",
@@ -96,7 +106,10 @@ const Navbar: React.FC<NavbarProps> = ({onMenuClick}) => {
                 <div className="flex-grow md:flex flex-row gap-4 items-center  w-full justify-end">
                     {/* Navigation Links (Hidden on mobile) */}
                     <div className="hidden md:flex flex-row gap-4 items-center">
-                        {menuItems.map((item) => (
+                        {menuItems.map((item) =>  {
+                            console.log(item)
+                            console.log("active key",activeKey)
+                            return(
                             <motion.div
                                 key={item.key}
                                 variants={navLinkVariants}
@@ -105,14 +118,16 @@ const Navbar: React.FC<NavbarProps> = ({onMenuClick}) => {
                             >
                                 <Link
                                     href={item.key === "home" ? "/" : item.key}
-                                    className={`text-${
-                                        theme === "light" ? "gray-800" : "gray-200"
-                                    } hover:text-blue-500`}
+                                    className={`text-${theme === "light" ? "gray-800" : "gray-200"} hover:text-blue-500 ${
+                                        item.key === activeKey
+                                            ? "font-bold text-amber-500 "
+                                            : "text-black font-normal"
+                                    }`}
                                 >
                                     {item.label}
                                 </Link>
                             </motion.div>
-                        ))}
+                        )})}
                     </div>
 
                     {/* Theme Switch (Hidden on mobile) */}

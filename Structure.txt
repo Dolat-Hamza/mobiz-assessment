@@ -1,21 +1,65 @@
-pages/
-├── users/
-│   ├── index.tsx (User list/Read)
-│   ├── create.tsx (Create user form)
-│   ├── [userId]/edit.tsx (Update user form)
-├── products/
-│   ├── index.tsx (Product list/Read)
-│   ├── create.tsx (Create product form)
-│   ├── [productId]/edit.tsx (Update product form)
-├── orders/
-│   ├── index.tsx (Order list/Read)
-│   ├── create.tsx (Create order form)
-│   ├── [orderId]/edit.tsx (Update order form)
-├── ... (other pages)
-components/
-├── UserForm.tsx (Form component for creating/updating users)
-├── ProductForm.tsx
-├── OrderForm.tsx
-utils/
-├── api.ts (Functions for making API requests)
-├── validation.ts (Input validation functions)
+src
+├── components
+│   ├── Common
+│   │   ├── Chart.tsx
+│   │   ├── Filter.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Layout.tsx
+│   │   ├── Logo.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── ProductTable.tsx
+│   │   ├── RequireAuth.tsx
+│   │   ├── Sidebar.tsx
+│   │   └── ThemeSwitch.tsx
+│   ├── Home
+│   │   ├── About.tsx
+│   │   ├── CallToAction.tsx
+│   │   ├── ErrorAlert.tsx
+│   │   ├── FeatureHighlights.tsx
+│   │   ├── Hero.tsx
+│   │   ├── LoadingSpinner.tsx
+│   │   ├── Pricing.tsx
+│   │   └── ProductGrid.tsx
+│   ├── OrderForm.tsx
+│   ├── ProductForm.tsx
+│   └── Products
+│       ├── AverageRating.tsx
+│       ├── BrandPopularityChart.tsx
+│       ├── DashboardLayout.tsx
+│       ├── PriceDisplay.tsx
+│       ├── PriceDistributionChart.tsx
+│       ├── ProductCategoryChart.tsx
+│       ├── ProductTable.tsx
+│       ├── ProfitAnalysis.tsx
+│       ├── SalesForecast.tsx
+│       ├── StockIndicator.tsx
+│       ├── StockLevelGauge.tsx
+│       ├── ThumbnailImage.tsx
+│       └── TopSellingProducts.tsx
+├── context
+│   └── ThemeContext.tsx
+├── pages
+│   ├── _app.tsx
+│   ├── _document.tsx
+│   ├── api
+│   │   ├── auth
+│   │   │   └── [...nextauth].ts
+│   │   └── hello.ts
+│   ├── auth
+│   │   └── login.tsx
+│   ├── dashboard.tsx
+│   ├── index.tsx
+│   ├── protected.tsx
+│   └── users
+│       ├── [userId]
+│       │   ├── edit.tsx
+│       │   └── index.tsx
+│       ├── create.tsx
+│       └── index.tsx
+├── styles
+│   └── globals.css
+└── utils
+    ├── ApiCalls.ts
+    ├── Interfaces.ts
+    ├── ProductCalculations.ts
+    └── validation.ts
